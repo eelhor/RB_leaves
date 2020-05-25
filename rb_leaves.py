@@ -255,11 +255,11 @@ class SetupRBConstraints(bpy.types.Operator):
         if select_objects_by_pattern(RB_constraint() + "*") == 'CANCELLED':
             return {'CANCELLED'}
         # Setup constraints
+        obj_name_len = len(RB_constraint())
         for obj in bpy.context.selected_objects:
-            if obj.name[-3:].isdigit():
-                suffix = obj.name[-7:]
-                obj.rigid_body_constraint.object1 = bpy.data.objects[RB_base() + suffix]
-                obj.rigid_body_constraint.object2 = bpy.data.objects[RB_leaf() + suffix]
+            suffix = obj.name[obj_name_len:]
+            obj.rigid_body_constraint.object1 = bpy.data.objects[RB_base() + suffix]
+            obj.rigid_body_constraint.object2 = bpy.data.objects[RB_leaf() + suffix]
         # Deselect all
         bpy.ops.object.select_all(action='DESELECT')
         return {'FINISHED'}
