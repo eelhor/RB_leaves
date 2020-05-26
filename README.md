@@ -1,5 +1,5 @@
 # RB_leaves
-Blender addon. Prepare leaves objects for rigid body simulation.
+Blender addon. Helps to prepare leaves objects for rigid body simulation.
 <p align="center">
   <img src="https://i.imgur.com/oqr43sg.jpg">
 </p>
@@ -18,10 +18,10 @@ This method does not prevent intersections, but can reduce them.
 <p>Example: leaf_01.002</p>
 
 <p><b>Setup rigid bodies</b>: Renames selected objects, creates RB helpers objects, sets up RB.</p>
-<p>RB helpers objects consist of:</p>
-<p>- constraint - empty object with RB constraint, set to Generic, which holds leaf object to base RB helpers object, allowing specified rotations.</p>
+<p>RB helpers:</p>
+<p>- constraint - empty object with RB constraint, set to Generic, which holds leaf object to base RB helper object, allowing specified rotations.</p>
 <p>- base - object with no vertices, only origin, with RB set to passive type.</p>
-<p>- holder - empty object, set as parent for leaf and RB helpers objects, helps manipulating(translation, rotation, scale) the whole construction.</p>
+<p>- holder - empty object, set as parent for leaf and RB helpers objects, helps manipulating the whole construction.</p>
 
 <p><b>Convert particle systems</b>: Converts particle systems. Sets appropriate objects for RB constraints.</p>
 
