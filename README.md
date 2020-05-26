@@ -1,8 +1,7 @@
 # RB_leaves
 Blender addon. Prepare leaves objects for rigid body simulation.
-
 <p align="center">
-  <img width="550" height="288" src="https://imgur.com/oqr43sg">
+  <img src="https://i.imgur.com/oqr43sg.jpg">
 </p>
 <p align="center">
 <b>Warning: </b>
@@ -12,22 +11,21 @@ This method does not prevent intersections, but can reduce them.
 </p>
 
 <p align="center">
-  <img width="232" height="440" src="https://imgur.com/WIvhcjD">
+  <img src="https://i.imgur.com/WIvhcjD.jpg">
 </p>
-<p align="center">
 
-<p><b>Name pattern</b> field allows to specify the name for leaves objects.
-<p>Addon follows next naming convention: [name_pattern]_[index].[instance]
-<p>Example: leaf_01.002
+<p><b>Name pattern</b> field allows to specify the name for leaves objects.</p>
+<p>Addon follows next naming convention: [name_pattern]_[index].[instance]</p>
+<p>Example: leaf_01.002</p>
 
-<b>Setup rigid bodies</b>: Renames selected objects, creates RB helpers objects, sets up RB.
-<p> RB helpers objects consist of:
-<p> constraint - empty object with RB constraint, set to Generic, which holds leaf object to base RB helpers object, allowing specified rotations.
-<p> base - object with no vertices, only origin, with RB set to passive type.
-<p> holder - empty object, set as parent for leaf and RB helpers objects, helps manipulating(translation, rotation, scale) the whole construction.
+<p><b>Setup rigid bodies</b>: Renames selected objects, creates RB helpers objects, sets up RB.</p>
+<p>RB helpers objects consist of:</p>
+<p>- constraint - empty object with RB constraint, set to Generic, which holds leaf object to base RB helpers object, allowing specified rotations.</p>
+<p>- base - object with no vertices, only origin, with RB set to passive type.</p>
+<p>- holder - empty object, set as parent for leaf and RB helpers objects, helps manipulating(translation, rotation, scale) the whole construction.</p>
 
-<b>Convert particle systems</b>: Converts particle systems. Sets appropriate objects for RB constraints.
+<p><b>Convert particle systems</b>: Converts particle systems. Sets appropriate objects for RB constraints.</p>
 
-<b>Apply RB transforms</b>: Applies RB transforms, removes RB helpers objects.
+<p><b>Apply RB transforms</b>: Applies RB transforms, removes RB helpers objects.</p>
 
 <b>Helpers</b>: Selects leaves and RB helpers objects by provided pattern.
