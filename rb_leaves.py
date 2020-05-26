@@ -118,7 +118,7 @@ class SetupRB(bpy.types.Operator):
     bl_idname = "operator.setup_rb"
     bl_label = "Setup RB"
     bl_options = {'REGISTER', 'UNDO'}
-    bl_description = "Setup RB for objects"
+    bl_description = "Rename selected objects, create RB helper objects, setup RB"
 
     def execute(self, context):
         selected_objects = bpy.context.selected_objects
@@ -205,7 +205,7 @@ class SetupRBConstraints(bpy.types.Operator):
     bl_idname = "operator.setup_constraints"
     bl_label = "Setup RB constraints"
     bl_options = {'REGISTER', 'UNDO'}
-    bl_description = "Set objects for RB constraints"
+    bl_description = "Convert particle systems. Set appropriate objects for RB constraints"
 
     def execute(self, context):
         current_object = bpy.context.object
@@ -268,7 +268,7 @@ class SetupRBConstraints(bpy.types.Operator):
 class ApplyRBTransforms(bpy.types.Operator):
     bl_idname = "operator.apply_transforms"
     bl_label = "Apply RB transforms"
-    bl_description = "Apply RB transforms"
+    bl_description = "Apply RB transforms, remove RB helper objects"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -283,7 +283,7 @@ class ApplyRBTransforms(bpy.types.Operator):
 class SelectLeaves(bpy.types.Operator):
     bl_idname = "operator.select_leaves"
     bl_label = "Select leaves"
-    bl_description = "Select leaves"
+    bl_description = "Select leaves objects by provided pattern"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -294,7 +294,7 @@ class SelectLeaves(bpy.types.Operator):
 class SelectHolders(bpy.types.Operator):
     bl_idname = "operator.select_holders"
     bl_label = "Select holders"
-    bl_description = "Select holders"
+    bl_description = "Select holders objects by provided pattern"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -305,7 +305,7 @@ class SelectHolders(bpy.types.Operator):
 class SelectBases(bpy.types.Operator):
     bl_idname = "operator.select_bases"
     bl_label = "Select bases"
-    bl_description = "Select bases"
+    bl_description = "Select bases objects by provided pattern"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -316,7 +316,7 @@ class SelectBases(bpy.types.Operator):
 class SelectConstraints(bpy.types.Operator):
     bl_idname = "operator.select_constraints"
     bl_label = "Select constraints"
-    bl_description = "Select constraints"
+    bl_description = "Select constraints objects by provided pattern"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
