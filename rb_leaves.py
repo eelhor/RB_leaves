@@ -7,7 +7,7 @@ bl_info = {
     "blender": (2, 90, 0),
     "category": "Object",
     "location": "3D Viewport -> UI",
-    "description": "Prepare leaves objects for rigid body simulation",
+    "description": "Helps to prepare leaves objects for rigid body simulation",
 }
 
 
@@ -118,7 +118,7 @@ class SetupRB(bpy.types.Operator):
     bl_idname = "operator.setup_rb"
     bl_label = "Setup RB"
     bl_options = {'REGISTER', 'UNDO'}
-    bl_description = "Rename selected objects, create RB helper objects, setup RB"
+    bl_description = "Rename selected objects, create RB helpers objects, setup RB"
 
     def execute(self, context):
         selected_objects = bpy.context.selected_objects
@@ -268,7 +268,7 @@ class SetupRBConstraints(bpy.types.Operator):
 class ApplyRBTransforms(bpy.types.Operator):
     bl_idname = "operator.apply_transforms"
     bl_label = "Apply RB transforms"
-    bl_description = "Apply RB transforms, remove RB helper objects"
+    bl_description = "Apply RB transforms, remove RB helpers objects"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
