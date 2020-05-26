@@ -9,7 +9,6 @@ Blender addon. Prepare leaves objects for rigid body simulation.
 <p align="center">
 This method does not prevent intersections, but can reduce them.
 </p>
-
 <p align="center">
   <img src="https://i.imgur.com/WIvhcjD.jpg">
 </p>
@@ -28,4 +27,7 @@ This method does not prevent intersections, but can reduce them.
 
 <p><b>Apply RB transforms</b>: Applies RB transforms, removes RB helpers objects.</p>
 
-<b>Helpers</b>: Selects leaves and RB helpers objects by provided pattern.
+<b>Helpers</b>: Select leaves and RB helpers objects by provided pattern.
+<p align="right">
+<a href="https://www.patreon.com/user?u=35862477"><img src="https://c5.patreon.com/external/favicon/favicon-32x32.png?v=69kMELnXkB"></a>
+</p>
