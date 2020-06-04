@@ -11,6 +11,14 @@ bl_info = {
 }
 
 
+def reset_child_location():
+    select_objects_by_pattern(RB_leaf() + "*")
+    selected_objects = bpy.context.selected_objects
+    for obj in selected_objects:
+        if obj.parent is not None:
+            obj.matrix_parent_inverse = obj.parent.matrix_world.inverted()
+
+
 def apply_transforms(object_pattern):
     select_objects_by_pattern(object_pattern + "*")
     bpy.ops.object.visual_transform_apply()
@@ -89,6 +97,12 @@ class VIEW3D_PT_rbleaves(bpy.types.Panel):
         row = layout.row()
         row.operator("operator.setup_constraints", text="Convert particle systems")
 
+        col = layout.column(align=True)
+        col.prop(context.scene, 'shrinkwrap_target', text='')
+
+        row = layout.row()
+        row.operator("operator.shrinkwrap_leaves", text="*Shrinkwrap leaves")
+
         row = layout.row()
         row.label(text="Set passive RB to collision objects")
 
@@ -127,7 +141,9 @@ class SetupRB(bpy.types.Operator):
             show_message_box("No visible objects selected", "Error", "ERROR")
             return {'CANCELLED'}
         # Create root collection in master collection
-        create_new_collection_in_root_collection("RB_leaves", bpy.context.view_layer.layer_collection)
+        root_collection_name = "RB_leaves"
+        create_new_collection_in_root_collection(root_collection_name, bpy.context.view_layer.layer_collection)
+        bpy.data.collections[root_collection_name].hide_render = True
         root_collection = bpy.context.view_layer.active_layer_collection
         # Create base mesh - origin with no vertices
         bpy.ops.mesh.primitive_cube_add(enter_editmode=True, align='WORLD', location=(0, 0, 0))
@@ -263,7 +279,7 @@ class SetupRBConstraints(bpy.types.Operator):
 
 class ApplyRBTransforms(bpy.types.Operator):
     bl_idname = "operator.apply_transforms"
-    bl_label = "Apply RB transforms"
+    bl_label = "Apply transforms, cleanup"
     bl_description = "Apply RB transforms, remove RB helpers objects"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -273,6 +289,24 @@ class ApplyRBTransforms(bpy.types.Operator):
         delete_objects(RB_holder())
         delete_objects(RB_base())
         delete_objects(RB_constraint())
+        return {'FINISHED'}
+
+
+class ShrinkwrapLeaves(bpy.types.Operator):
+    bl_idname = "operator.shrinkwrap_leaves"
+    bl_label = "Add shrinkwrap constraint to leaves"
+    bl_description = "Shrinkwrap leaves to target object"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        if bpy.context.scene.shrinkwrap_target == '':
+            show_message_box("No target for shrinkwrap provided", "Error", "ERROR")
+            return {'CANCELLED'}
+        select_objects_by_pattern(RB_leaf() + "*")
+        selected_objects = bpy.context.selected_objects
+        for obj in selected_objects:
+            obj.constraints.new('SHRINKWRAP')
+            obj.constraints[-1].target = bpy.context.scene.shrinkwrap_target
         return {'FINISHED'}
 
 
@@ -325,6 +359,7 @@ blender_classes = [
     SetupRB,
     SetupRBConstraints,
     ApplyRBTransforms,
+    ShrinkwrapLeaves,
     SelectLeaves,
     SelectHolders,
     SelectBases,
@@ -339,6 +374,11 @@ def register():
         default='leaf',
         subtype='NONE',
     )
+    bpy.types.Scene.shrinkwrap_target = bpy.props.PointerProperty(
+        name='Shrinkwrap target',
+        description='\nTarget object for shrinkwrap constraint',
+        type=bpy.types.Object,
+    )
     for blender_class in blender_classes:
         bpy.utils.register_class(blender_class)
         print("Registered {}".format(bl_info['name']))
@@ -346,6 +386,7 @@ def register():
 
 def unregister():
     del bpy.types.Scene.pattern
+    del bpy.types.Scene.shrinkwrap_target
     for blender_class in blender_classes:
         bpy.utils.unregister_class(blender_class)
         print("Unregistered {}".format(bl_info['name']))
