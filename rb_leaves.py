@@ -245,12 +245,8 @@ class SetupRBConstraints(bpy.types.Operator):
             collection_to_unlink.objects.unlink(leaf_object)
             collection_to_link.objects.link(leaf_object)
         # Hide particle system modifiers from viewport and render
-        for modifier in current_object.modifiers:
-            if modifier.name[:8] == 'Particle':
-                # TODO: Why hiding breaks RB?
-                bpy.data.particles[modifier.particle_system.name].instance_collection = None
-                # current_object.modifiers[modifier.name].show_viewport = False
-                # current_object.modifiers[modifier.name].show_render = False
+        for particle_system in bpy.context.object.particle_systems:
+            particle_system.settings.instance_collection = None
         # Check if RB constraint objects are among particles
         if select_objects_by_pattern(RB_constraint() + "*") == 'CANCELLED':
             return {'CANCELLED'}
