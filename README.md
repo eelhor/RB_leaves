@@ -10,7 +10,7 @@ Blender addon. Helps to prepare leaves objects for rigid body simulation.
 This method does not prevent intersections, but can reduce them.
 </p>
 <p align="center">
-  <img src="https://i.imgur.com/g3bQenF.jpg">
+  <img src="https://i.imgur.com/S5v9cm8.jpg">
 </p>
 
 <p><b>Name pattern</b> field allows to specify the name for leaves objects.</p>
@@ -25,7 +25,7 @@ This method does not prevent intersections, but can reduce them.
 
 <p><b>Convert particle systems</b>: Converts particle systems. Sets appropriate objects for RB constraints.</p>
 
-<p><b>*Shrinkwrap leaves</b>: Add shrinkwrap constraint to leaves objects with target set to provided object.</p>
+<p><b>*Shrinkwrap leaves</b>: Adds shrinkwrap constraint to leaves objects with target set to provided object.</p>
 
 <p><b>Apply RB transforms, cleanup</b>: Applies RB transforms, removes RB helpers objects.</p>
 
