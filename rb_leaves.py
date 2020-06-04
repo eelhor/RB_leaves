@@ -299,7 +299,7 @@ class ShrinkwrapLeaves(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        if bpy.context.scene.shrinkwrap_target == '':
+        if bpy.context.scene.shrinkwrap_target == None:
             show_message_box("No target for shrinkwrap provided", "Error", "ERROR")
             return {'CANCELLED'}
         select_objects_by_pattern(RB_leaf() + "*")
