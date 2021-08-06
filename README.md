@@ -33,6 +33,3 @@ This method does not prevent intersections, but can reduce them.
 <p>
 <a href="https://www.youtube.com/playlist?list=PLWfG_VUdQuzPsM6DI6yYxCTNr8kM3ae-O">Demo video</a>
 </p>
-<p align="right">
-<a href="https://www.patreon.com/user?u=35862477"><img src="https://c5.patreon.com/external/favicon/favicon-32x32.png?v=69kMELnXkB"></a>
-</p>
